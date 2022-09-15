@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .title {
+            background-color: aqua;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<!--准备一个容器-->
+<div id="text"></div>
+<!--引入react核心库-->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<!--引入react-dom，支持react的dom操作-->
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    let id = 'IkdoD';
+    let data = 'hello!!!!!!'
+    //1、创建虚拟dom
+    let vDom = (
+        <h1 className="title" id={id.toLowerCase()}>
+            <span style={{color: '#ff0'}}>
+                {data}
+            </span>
+            <input/>
+        </h1>
+    )
+    //2、渲染虚拟dom到页面
+    ReactDOM.render(vDom, document.getElementById('text'))
+
+    /**
+     * jsx语法规则：
+     * 1、自定虚拟dom时候不要引号
+     * 2、标签中混入js表达式时候要使用花括号
+     * 3、样式的类名指定需要用到className，而不是class
+     * 4、内联样式要使用style={{key,'value'}}的形式
+     * 5、虚拟dom必须只有一个根标签
+     * 6、标签必须闭合
+     * 7、标签首字母若是小写字母，则将其转为html标签，若无改标签对应的html元素则报错；
+     * 若是大写字母，react就会渲染对应的组件，如果没有则报错。
+     */
+</script>
+</body>

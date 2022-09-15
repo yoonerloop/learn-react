@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="text"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+
+        /**
+         * getSnapshotBeforeUpdate使用场景非常罕见
+         **/
+        class App2 extends React.Component {
+
+            state = {
+                count: 0
+            }
+
+            getSnapshotBeforeUpdate(prevProps, prevState) {
+                //返回任意值
+                return "id"
+            }
+
+            /**
+             * 可以在即将更新之前做一些工作
+             *
+             * @param prevProps : 更新前的ProPes
+             * @param prevState ：更新前的state
+             * @param snapshot  ：快照，对应getSnapshotBeforeUpdate返回的SnapshotValue
+             */
+            componentDidUpdate(prevProps, prevState, snapshot) {
+                console.log("componentDidUpdate：", prevProps, prevState, snapshot)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <div>{this.state.count}</div>
+                        <button onClick={this.click}>点击</button>
+                    </div>
+                )
+            }
+
+            click = () => {
+                const { count } = this.state
+                this.setState({
+                    count: count + 1
+                })
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById('text'));
+    </script>
+</body>

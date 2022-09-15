@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="text"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+       
+       //只能使用props，不能使用state
+        function MyComponent (props) {
+                return (
+                    <div>
+                        <ul>
+                            <li>{props.name}</li>
+                            <li>{props.age}</li>
+                        </ul>
+                    </div>
+                )
+        }
+
+
+        /**
+         * props属性是只读的，不能修改
+         *
+         * 参数限制：省略
+         *
+         *
+         */
+        // MyComponent.propTypes = {
+        //     name: React.PropTypes.string
+
+        // }
+
+        const obj = {
+            name: '张三',
+            age: 40
+        }
+        //这种使用方法叫做批量的传递属性props
+        ReactDOM.render(<MyComponent {...obj} />, document.getElementById('text'))
+    </script>
+</body>

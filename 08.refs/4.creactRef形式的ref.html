@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="text"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // 最新版本的使用方式
+        class MyComponent extends React.Component {
+
+            /**
+             * React.creactRef可以返回一个容器，该容器可以存储被ref所标识的节点，有几个组件、标签的ref就需要几个createRef创建，
+             * 不能共用一个，多个标签添加一个后加的的覆盖之前加的，几个标签创建一个ref。
+             **/
+            myRef1 = React.createRef();
+            myRef2 = React.createRef();
+
+            render() {
+                return (
+                    <div>
+                        {/*当执行的时候发现myRef是由createRef创建的，会把这个节点加入到容器中*/}
+                        <input ref={this.myRef1} type='text' placeholder='输入内容点击按钮' />
+                        <button onClick={this.showData}>点我提示</button>
+                        <input ref={this.myRef2} onBlur={this.showData2} type='text' placeholder='移除光标焦点' />
+                    </div>
+                )
+            }
+
+            showData = () => {
+                alert(this.myRef1.current.value);
+            }
+
+            showData2 = () => {
+                alert(this.myRef1.current.value);
+            }
+        }
+        ReactDOM.render(<MyComponent />, document.getElementById('text'))
+    </script>
+</body>

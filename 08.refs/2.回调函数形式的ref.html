@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="text"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        // 低版本使用
+        class MyComponent extends React.Component {
+
+            render() {
+                return (
+                    <div>
+                         {/*this指的是render上下文，将该标签节点挂载在实例自己上赋值给input1变量*/}
+                        <input ref={(e) => { this.input1 = e }} type='text' placeholder='输入内容点击按钮' />
+                        <button onClick={this.showData}>点我提示</button>
+                        <input ref={(e) => this.input2 = e} onBlur={this.showData2} type='text' placeholder='移除光标焦点' />
+                    </div>
+                )
+            }
+
+            //左侧输入框的数据
+            showData = () => {
+                console.log(this.input1);
+                alert(this.input1.value)
+            }
+            //右侧输入框的数据
+            showData2 = () => {
+                console.log(this.input2);
+                const { input2 } = this
+                alert(input2.value)
+            }
+        }
+
+
+
+        ReactDOM.render(<MyComponent />, document.getElementById('text'))
+    </script>
+</body>
