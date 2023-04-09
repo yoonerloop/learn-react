@@ -3,7 +3,7 @@ export const defaultInitial = {
 }
 
 // 注意参数需要一一对应，dispatch的参数在action，而不是state
-export default function appReducer(state = defaultInitial, action: any) {
+export default function appReducer(state = defaultInitial, action) {
     const {type} = action;
     console.log(state)
     switch (type) {
