@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--准备一个容器-->
+<div id="text"></div>
+<div id="demo"></div>
+<!--引入react核心库-->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<!--引入react-dom，支持react的dom操作-->
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    //1/创建虚拟dom
+    let vDom = <div>
+        <h1>
+            <span>Hello,React</span>
+        </h1>
+    </div>
+    console.log('虚拟dom1：', vDom)
+    console.log('虚拟dom2：', typeof vDom)
+    console.log('虚拟dom3：', vDom instanceof Object)
+    let demo = document.getElementById('demo')
+    console.log('真实dom：', demo)
+    //debugger
+    //2、渲染虚拟dom到页面
+    ReactDOM.render(vDom, document.getElementById('text'))
+    /**
+     * 总结
+     *
+     * 1、虚拟dom本质上是Object类型的对象
+     * 2、虚拟dom比较轻，真实dom比较重，因为虚拟dom是react自己在用，无需真实demo那么多的属性。
+     * 3、虚拟dom最终会被react转为真实dom，渲染在浏览器上面。
+     */
+</script>
+</body>

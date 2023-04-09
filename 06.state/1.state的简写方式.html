@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="text"></div>
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    //开发中推荐使用这种方式
+    class MyComponent extends React.Component {
+
+        state = {
+            weather: '热天'
+        }
+
+        render() {
+            return (
+                <div>
+                    <h1>{this.state.weather}</h1>
+                    <button onClick={this.upDateWeather}>点击</button>
+                </div>
+            )
+        }
+
+        upDateWeather = () => {
+            this.setState({
+                weather: "雨天"
+            })
+        }
+    }
+
+    ReactDOM.render(<MyComponent/>, document.getElementById('text'))
+</script>
+</body>

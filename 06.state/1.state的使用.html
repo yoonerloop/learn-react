@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--准备一个容器-->
+<div id="text"></div>
+<!--引入react核心库-->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<!--引入react-dom，支持react的dom操作-->
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    class MyComponent extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                weather: '热天'
+            }
+            this.test = this.upDateWeather.bind(this)
+        }
+
+        render() {
+            return (
+                <div>
+                    <h1>{this.state.weather}</h1>
+                    <button onClick={this.test}>点击</button>
+                </div>
+            )
+        }
+
+        upDateWeather() {
+           this.setState({
+              weather:"雨天"
+           })
+        }
+    }
+    ReactDOM.render(<MyComponent/>, document.getElementById('text'))
+</script>
+</body>

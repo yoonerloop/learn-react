@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favicon.ico" />
+    <title>Title</title>
+</head>
+<body>
+<!--准备一个容器-->
+<div id="text"></div>
+<!--引入react核心库-->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<!--引入react-dom，支持react的dom操作-->
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    //1、创建函数组件
+    function Demo(){
+        //这里的this是undefined，因为react编译后开启了严格模式
+        console.log(this)
+        return <h2>我是函数定义的组件，适用于简单组件的定义</h2>
+    }
+    //2、渲染虚拟组件到页面
+    ReactDOM.render(<Demo/>, document.getElementById('text'))
+    //3、执行<Demo/>之后，react会执行标签，找打Demo标签
+    //4、发现组件是函数定义的，随后调用该函数，将返回的虚拟dom转为真实dom，随后将结果呈现在页面中
+</script>
+</body>

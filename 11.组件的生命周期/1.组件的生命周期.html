@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="text"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+
+        /*
+        （1）初始化阶段：由ReactDOM.render触发，出次渲染。
+
+        > 1、constructor()
+        >
+        > 2、componentWillMount()
+        >
+        > 3、render()------------>必须使用
+        >
+        > 4、componentDidMount()------------>常用，初始化
+
+        （2）更新阶段：由组件内部this.setState()或者父组件重新render
+
+        > 1、shouldComponentUpdate()
+        >
+        > 2、componentWillUpdate()
+        >
+        > 3、render()
+        >
+        > 4、componentDidUpdate()
+
+        （3）卸载组件：由组件ReactDOM.unmountComponentAtNode()触发
+
+        > 1、componentWillUnmount()------------>常用，收尾工作
+
+        */
+        class App2 extends React.Component {
+
+            componentDidMount() {
+
+            }
+            componentWillMount() {
+
+            }
+            render() {
+                return (
+                    <div>哈哈哈</div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById('text'));
+    </script>
+</body>
